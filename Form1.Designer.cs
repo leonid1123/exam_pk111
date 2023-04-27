@@ -39,12 +39,15 @@
             this.vid = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.bp = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(530, 142);
+            this.button1.Location = new System.Drawing.Point(530, 49);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(160, 70);
             this.button1.TabIndex = 0;
@@ -55,7 +58,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(530, 382);
+            this.button2.Location = new System.Drawing.Point(530, 461);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(160, 70);
             this.button2.TabIndex = 1;
@@ -145,11 +148,47 @@
             this.bp.Size = new System.Drawing.Size(434, 34);
             this.bp.TabIndex = 12;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(488, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(0, 29);
+            this.label5.TabIndex = 14;
+            // 
+            // button3
+            // 
+            this.button3.Enabled = false;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(530, 248);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(160, 70);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Изменить";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(530, 324);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(176, 20);
+            this.checkBox1.TabIndex = 16;
+            this.checkBox1.Text = "Разрешить изменения";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(739, 543);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.bp);
             this.Controls.Add(this.label3);
@@ -182,6 +221,9 @@
         private System.Windows.Forms.TextBox vid;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox bp;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
