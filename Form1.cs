@@ -1,13 +1,14 @@
 ﻿using MySqlConnector;
 using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace exam_pk111
 {
     public partial class Form1 : Form
     {
         //private MySqlConnection conn = null;
-
+        List<Comp> mylist = new List<Comp>();
         public Form1()
         {
             InitializeComponent();
@@ -44,17 +45,24 @@ namespace exam_pk111
 
         private void button2_Click(object sender, EventArgs e)
         {
+            mylist.Clear();
             //conn.Open();
             listBox1.Items.Clear();
-            string sqlSel = "SELECT motherboard,processor,videocard,power FROM computers";
+            string sqlSel = "SELECT motherboard,processor,videocard,power,id FROM computers ORDER BY id ASC";
             MySqlCommand sel = new MySqlCommand(sqlSel, DBC.GetConn());
             MySqlDataReader selRead = sel.ExecuteReader();
             while (selRead.Read())
             {
-                listBox1.Items.Add(selRead.GetString(0) + " " + selRead.GetString(1) + " " + selRead.GetString(2) + " " + selRead.GetString(3));
+                Comp newComp = new Comp(selRead.GetInt32(4), selRead.GetString(0), selRead.GetString(1), selRead.GetString(2), selRead.GetString(3));
+                mylist.Add(newComp);
+                //listBox1.Items.Add(selRead.GetString(0) + " " + selRead.GetString(1) + " " + selRead.GetString(2) + " " + selRead.GetString(3));
             }
             //conn.Close();
             DBC.CloseConn();
+            foreach (var item  in mylist)
+            {
+                listBox1.Items.Add(item.PrintInfo());
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -72,6 +80,17 @@ namespace exam_pk111
         {
             button3.Enabled=false;
             checkBox1.Checked=false;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(listBox1.SelectedIndex);
+            Console.WriteLine(mylist[listBox1.SelectedIndex].PrintInfo());       
+            String[] allInfo = mylist[listBox1.SelectedIndex].PrintInfo().Split('|');
+            mb.Text = allInfo[0];
+            proc.Text = allInfo[1];
+            vid.Text = allInfo[2];
+            bp.Text = allInfo[3];
         }
     }
 }
